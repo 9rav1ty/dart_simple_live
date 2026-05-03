@@ -16,10 +16,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: dev
+          ref: refs/heads/dev
+          fetch-depth: 1
           fetch-tags: false
           clean: true
-          fetch-refspec: +refs/heads/dev:refs/remotes/origin/dev
 
       # APK签名设置
       - name: Download Android keystore
@@ -152,10 +152,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: dev
+          ref: refs/heads/dev
+          fetch-depth: 1
           fetch-tags: false
           clean: true
-          fetch-refspec: +refs/heads/dev:refs/remotes/origin/dev
 
       # 设置Flutter环境
       - name: Setup Flutter
@@ -203,10 +203,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: dev
+          ref: refs/heads/dev
+          fetch-depth: 1
           fetch-tags: false
           clean: true
-          fetch-refspec: +refs/heads/dev:refs/remotes/origin/dev
           
       # 设置Flutter环境
       - name: Setup Flutter
