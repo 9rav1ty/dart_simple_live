@@ -10,18 +10,16 @@ jobs:
   # 打包Android、iOS、Mac
   build-mac-ios-android:
     runs-on: macos-latest
-
     permissions:
       contents: write
-
     steps:
-      # 签出代码 ← 这里改了
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: dev
           fetch-tags: false
           clean: true
+          fetch-refspec: +refs/heads/dev:refs/remotes/origin/dev
 
       # APK签名设置
       - name: Download Android keystore
@@ -143,7 +141,6 @@ jobs:
           path: |
             simple_live_app/build/dist/*/*.dmg
             simple_live_app/build/dist/*/*.zip
-      #完成
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
   # 打包Linux
@@ -152,13 +149,13 @@ jobs:
     permissions:
       contents: write
     steps:
-      # 签出代码 ← 这里改了
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: dev
           fetch-tags: false
           clean: true
+          fetch-refspec: +refs/heads/dev:refs/remotes/origin/dev
 
       # 设置Flutter环境
       - name: Setup Flutter
@@ -195,7 +192,6 @@ jobs:
           path: |
             simple_live_app/build/dist/*/*.deb
             simple_live_app/build/dist/*/*.zip
-        #完成
       - run: echo "🍏 Linux job's status is ${{ job.status }}."
 
   # 打包Windows
@@ -204,13 +200,13 @@ jobs:
     permissions:
       contents: write
     steps:
-      # 签出代码
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-tags: false
           ref: dev
+          fetch-tags: false
           clean: true
+          fetch-refspec: +refs/heads/dev:refs/remotes/origin/dev
           
       # 设置Flutter环境
       - name: Setup Flutter
@@ -240,5 +236,4 @@ jobs:
           path: |
             simple_live_app/build/dist/*/*.msix
             simple_live_app/build/dist/*/*.zip
-        #完成
       - run: echo "🍏 Windows job's status is ${{ job.status }}."
