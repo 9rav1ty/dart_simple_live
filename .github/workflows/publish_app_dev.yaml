@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: refs/heads/dev
+          ref: ${{ github.ref }}
           fetch-depth: 1
           fetch-tags: false
           clean: true
@@ -152,7 +152,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: refs/heads/dev
+          ref: ${{ github.ref }}
           fetch-depth: 1
           fetch-tags: false
           clean: true
@@ -203,7 +203,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: refs/heads/dev
+          ref: ${{ github.ref }}
           fetch-depth: 1
           fetch-tags: false
           clean: true
